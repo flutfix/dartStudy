@@ -34,7 +34,7 @@ main() {
   list.sort();
   print(list.reversed);
 
-  var newList = [1, 2, 3];
+  var newList = [list[0], list[5], list[6]];
   print(newList);
 
   print(list[4]);
@@ -42,8 +42,10 @@ main() {
   list.removeWhere((item) => item > 4);
   print(list);
 
-  newList = [10, 20, 30];
-  print(newList);
+  for (int i = 0; i < 3; i++) {
+    list[i] = list[i] * 10;
+  }
+  print(list);
 
 //9
   Map<String, int> numberBook = {
