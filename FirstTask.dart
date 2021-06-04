@@ -72,13 +72,12 @@ main() {
   print(numberBook);
 
   //9.4
-  var sortedKeys = numberBook.keys.toList()..sort();
-  sortedKeys.sort((a, b) => b.compareTo(a));
-  print(sortedKeys);
-  final Map<String, dynamic> newNumberBook = {};
-  sortedKeys.forEach((key) => newNumberBook[key] = numberBook[key]);
-  numberBook.clear();
-  print(newNumberBook);
+  var sortedMap = numberBook.entries.toList()
+    ..sort((a, b) => b.key.compareTo(a.key));
+  numberBook
+    ..clear()
+    ..addEntries(sortedMap);
+  print(numberBook);
 
 //10
   Set<String> mySet = {'Москва', 'Вашингтон', 'Париж'};
