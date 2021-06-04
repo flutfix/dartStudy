@@ -32,7 +32,7 @@ main() {
   print(list.length);
 
   list.sort();
-  print(list.reversed);
+  print(list.reversed.toList());
 
   var newList = [list[0], list[5], list[6]];
   print(newList);
