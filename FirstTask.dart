@@ -3,8 +3,7 @@ import 'dart:collection';
 main() {
 //3 Создать строковую переменную с именем text  при помощи var, попытаться присвоить переменной a. Каков результат?
   var text = "Text";
-  // a = text;
-  // Константы менять нельзя
+  // Если переменная строгой типизации, то к ней нельзя присвоить переменную другого типа данных
 
 //4 Создать переменную  с именем dyn при помощи dynamic, проинициализировать его целочисленным значением,
 // далее попытаться присвоить переменной строковое значение переменной text. Каков результат? Почему?
@@ -28,38 +27,58 @@ main() {
   print('I \u2665 Dart');
 
 //8
+
+  // 8.1
   var list = [1, 2, 3, 4, 5, 6, 7, 8];
+  // 8.2
   print(list.length);
 
-  list.sort();
-  print(list.reversed.toList());
+  // 8.3
+  list.sort((a, b) => b.compareTo(a));
+  print('В обратном списке $list');
 
-  var newList = [list[0], list[5], list[6]];
-  print(newList);
+  // 8.4
+  var newList = list.sublist(0, 3);
+  print('Подсписок $newList');
 
-  print(list[4]);
+  // 8.5
+  for (int i = 0; i < list.length; i++) {
+    list[i] == 5 ? print('Индекс 5 - $i') : null;
+  }
 
+  // 8.6
   list.removeWhere((item) => item > 4);
   print(list);
 
-  for (int i = 0; i < 3; i++) {
-    list[i] = list[i] * 10;
+  // 8.7
+  for (int i = 0; i < list.length; i++) {
+    list[i] < 4 ? list[i] = list[i] * 10 : null;
   }
   print(list);
 
 //9
-  Map<String, int> numberBook = {
+
+  //9.1
+  Map<String, dynamic> numberBook = {
     "Иван": 2264865,
     "Татьяна": 89523366684,
     "Олег": 84952256575,
   };
+  //9.2
   print(numberBook);
 
+  //9.3
   numberBook['Екатерина'] = 2359942;
   print(numberBook);
 
-  numberBook = LinkedHashMap.fromEntries(numberBook.entries.toList().reversed);
-  print(numberBook);
+  //9.4
+  var sortedKeys = numberBook.keys.toList()..sort();
+  sortedKeys.sort((a, b) => b.compareTo(a));
+  print(sortedKeys);
+  final Map<String, dynamic> newNumberBook = {};
+  sortedKeys.forEach((key) => newNumberBook[key] = numberBook[key]);
+  numberBook.clear();
+  print(newNumberBook);
 
 //10
   Set<String> mySet = {'Москва', 'Вашингтон', 'Париж'};
@@ -80,7 +99,9 @@ main() {
 }
 
 //1 Создать глобальную переменную типа int с именем a
-const int a = 23;
+int a = 23;
 
 //2 Создать локальную переменную типа double с именем b
-local(double b) {}
+local() {
+  double b;
+}
