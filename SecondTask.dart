@@ -57,7 +57,7 @@ void main() {
   var input;
   int sum = 0;
   while (input != 'stop') {
-    stdout.write('Введите число:');
+    stdout.write('Введите число: ');
     input = stdin.readLineSync();
     try {
       sum += int.parse(input);
