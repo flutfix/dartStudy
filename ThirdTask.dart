@@ -19,6 +19,10 @@ void main() {
   int b = 2;
   int c = 5;
 
+  // int a = 2;
+  // int b = 1;
+  // int c = 1;
+
   // 1 корень
   // int a = 4;
   // int b = -4;
@@ -70,11 +74,14 @@ String task4({required int a, required int b, required int c}) {
   }
 
   descriminant();
-  roots();
 
   if (d < 0) {
     return 'Нет корней';
-  } else if (x1 == x2) {
+  } else {
+    roots();
+  }
+
+  if (x1 == x2) {
     return 'X = $x1';
   } else {
     return 'X1= $x1, X2= $x2';
